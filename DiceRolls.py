@@ -260,5 +260,94 @@ def roll_for_danger_type() -> str:
         case 3:
             return "hostile"
 
-def roll_for_danger() -> str:
+
+encounter_type_tuple: tuple = (
+    "human",
+    "animal",
+    "humanoid",
+    "monster (s)",
+    "monster (l)",
+    "unnatural"
+)
+
+danger_dict: dict = {
+    "unnatural": (
+        "ghoul",
+        "zombie",
+        "skeleton",
+        "demon",
+        "elemental",
+        "wraith"
+    ),
+    "hazard": (
+        "bog",
+        "landslide",
+        "sinkhole",
+        "poison",
+        "resources",
+        "ambush"
+    ),
+    "hostile": {
+        "grasslands": (
+            0,
+            0,
+            1,
+            1,
+            2,
+            3
+        ),
+        "woods": (
+            0,
+            1,
+            2,
+            2,
+            3,
+            4
+        ),
+        "hills": (
+            0,
+            1,
+            2,
+            3,
+            4,
+            4
+        ),
+        "mountains": (
+            0,
+            1,
+            2,
+            2,
+            4,
+            4
+        ),
+        "swamps": (
+            0,
+            1,
+            2,
+            5,
+            5,
+            3
+        ),
+        "wastelands": (
+            0,
+            2,
+            2,
+            5,
+            3,
+            4
+        )
+    }
+}
+
+
+def roll_for_danger(danger_type: str, terrain: str) -> str:
     roll: int = roll_die(6)
+    match danger_type:
+        case "unnatural":
+            return danger_dict.get(danger_type)[roll]
+        case "hazard":
+            return danger_dict.get(danger_type)[roll]
+        case "hostile":
+            return danger_dict.get(danger_type).get(terrain)[roll]
+
+

@@ -66,3 +66,6 @@ if __name__ == '__main__':
     first_location = (0, 0)
     first_quest = Quest(first_location)
     first_quest.print_results()
+
+
+# TODO: Have quests be given by random NPC that you must return to.

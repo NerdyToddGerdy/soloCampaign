@@ -35,10 +35,6 @@ def set_water_feature() -> str:
             return "lake"
 
 
-def set_exploration_result():
-    roll = roll_die(6)
-
-
 class Hex:
     coordinates: Tuple[int, int]
     terrain: str
@@ -52,7 +48,7 @@ class Hex:
         self.terrain = set_terrain(last_terrain)
         self.weather_type = set_weather_type()
         self.water_feature = set_water_feature()
-        self.exploration_result = set_exploration_result()
+        # self.exploration_result = set_exploration_result()
 
 
 if __name__ == '__main__':
